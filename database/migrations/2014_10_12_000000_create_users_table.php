@@ -11,10 +11,11 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up()<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js"></script>
+    public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('usertype')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -23,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->deafault(1);
+            $table->tinyInteger('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

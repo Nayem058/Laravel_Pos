@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::prefix('user')->group(function () {
+    Route::get('view', 'Backend\UserController@view')->name('user.view');
+    Route::get('add', 'Backend\UserController@add')->name('user.add');
+    Route::post('store', 'Backend\UserController@store')->name('user.store');
+    Route::get('edit/{id}', 'Backend\UserController@edit')->name('user.edit');
+    Route::post('update/{id}', 'Backend\UserController@update')->name('user.update');
+    Route::get('delete/{id}', 'Backend\UserController@delete')->name('user.delete');
+});
